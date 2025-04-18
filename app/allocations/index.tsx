@@ -6,7 +6,7 @@ const AllocationScreen = () => {
   return (
     <View>
       <Text>Allocation</Text>
-      <Link href="/account">Go to Account</Link>
+      <Link href={"/allocations/add-allocation"}>New Allocations</Link>
     </View>
   )
 }
