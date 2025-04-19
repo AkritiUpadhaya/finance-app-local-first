@@ -9,13 +9,15 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.finance-app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.financeapp"
     },
     "web": {
       "bundler": "metro",
@@ -34,19 +36,18 @@
         }
       ],
       [
+        "@morrowdigital/watermelondb-expo-plugin"
+      ],
+      [
         "expo-build-properties",
         {
-          "ios":{
-            "extraPods":[
-              {
-                "name":"simdjson",
-                "configurations":["Debug", "Release"],
-                "path":"../node_modules/@nozbe/simdjson",
-                "modular_headers": true
-              }
-              
-
-            ]
+          "android": {
+            "kotlinVersion": "1.6.10",
+            "packagingOptions": {
+              "pickFirst": [
+                "**/libc++_shared.so"
+              ]
+            }
           }
         }
       ]
