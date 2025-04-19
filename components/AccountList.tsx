@@ -3,19 +3,10 @@ import React, { useEffect, useState } from 'react'
 import AccountListItem from './AccountListItem'
 import { accountCollection } from '@/src/db'
 import Account from '@/src/model/Account'
+import {withObservables} from '@nozbe/watermelondb/react'
 
-export default function AccountList() {
-    const [accounts, setAccounts]= useState<Account[]>([])
-
-    useEffect(()=>{
-        const fetchAccounts= async()=>{
-            const accounts= await accountCollection.query().fetch();
-            setAccounts(accounts)
-        }
-        fetchAccounts()
-        
-    }, [])
-    console.log(accounts)
+export function AccountList({accounts}:{accounts:Account[]}) {
+    
   return (
     <>
   <FlatList data={accounts} 
@@ -26,3 +17,9 @@ export default function AccountList() {
   </>
   )
 }
+
+const enhance= withObservables([], ()=>({
+    accounts:accountCollection.query()
+}))
+export default enhance(AccountList);
+;
