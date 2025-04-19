@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, Button, TextInput} from 'react-native'
 import React, { useState } from 'react'
 import AccountList from '@/components/AccountList'
 import AccountListItem from '@/components/AccountListItem'
+import database from '@/src/db'
 
 const AccountScreen = () => {
   const[name, setName]= useState('')
@@ -9,6 +10,18 @@ const AccountScreen = () => {
   const[tap, setTap]= useState('')
   const createAccount=()=>{
     console.warn("create account", name)
+  }
+  const onRead=async ()=>{
+    const accountCollection= database.get('accounts');
+    const accounts= await accountCollection.query().fetch();
+    console.log(accounts)
+    // await database.write(async()=>{
+    //   await accountCollection.create((account)=>{
+    //     account.name= 'Test';
+    //     account.cap= 10;
+    //     account.tap= 2;
+    //   })
+    // })
   }
   return (
     <View style={{gap:5}}>
@@ -25,6 +38,7 @@ const AccountScreen = () => {
       <TextInput value={cap} onChangeText={setTap} placeholder='TAP'/>
      </View>
      <Button title='Add account' onPress={createAccount}/>
+     <Button title='Test' onPress={onRead}/>
     </View>
   )
 }
