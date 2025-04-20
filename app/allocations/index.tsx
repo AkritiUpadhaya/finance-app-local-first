@@ -1,12 +1,14 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { Link } from 'expo-router'
+import AllocationList from '@/components/AllocationList'
 
 const AllocationScreen = () => {
   return (
     <View>
-      <Text>Allocation</Text>
-      <Link href={"/allocations/add-allocation"}>New Allocations</Link>
+      
+      <Link href={"/allocations/add-allocation"}>Go To New Allocations</Link>
+      <AllocationList/>
     </View>
   )
 }

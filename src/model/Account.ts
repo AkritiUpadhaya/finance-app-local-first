@@ -9,3 +9,4 @@ export default class Account extends Model {
   @field('tap') tap!:number;
 
 }
+

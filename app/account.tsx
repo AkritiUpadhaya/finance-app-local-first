@@ -25,13 +25,7 @@ const AccountScreen = () => {
     setTap('');
 
   }
-  const onDelete=async()=>{
-    await database.write(async()=>{
-      const accounts= await accountCollection.query().fetch()
-      const account= accounts[1]
-      account.destroyPermanently()
-    })
-  }
+  
   // const onRead=async ()=>{
   //   // console.log(accounts)
   // }
@@ -63,7 +57,7 @@ const AccountScreen = () => {
       </View>
      </View>
      <Button title='Add account' onPress={createAccount}/>
-     <Button title='Delete' onPress={onDelete}/>
+     
     </View>
   )
 }
