@@ -1,6 +1,6 @@
 import { View, Text, TextInput, Button } from 'react-native'
 import React, { useState } from 'react'
-import { Stack } from 'expo-router'
+import { router, Stack } from 'expo-router'
 import { StyleSheet } from 'react-native'
 import database, { allocationCollection } from '@/src/db'
 
@@ -15,6 +15,7 @@ const AddAllocationScreen = () => {
         console.log("saved")
       })
     })
+    router.back()
   }
   return (
     <View style={styles.container}>
