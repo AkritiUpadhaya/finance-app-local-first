@@ -25,23 +25,27 @@ const AccountScreen = () => {
     setTap('');
 
   }
-  const onRead=async ()=>{
-    
-    
-    // console.log(accounts)
-   
-  }
-
-  const onTest= async()=>{
+  const onDelete=async()=>{
     await database.write(async()=>{
-      const accounts = await accountCollection.query().fetch();
-      const account= accounts[0]
-      account.update((updatedAccount)=>{
-        updatedAccount.name= "54321";
-
-      })
+      const accounts= await accountCollection.query().fetch()
+      const account= accounts[1]
+      account.destroyPermanently()
     })
   }
+  // const onRead=async ()=>{
+  //   // console.log(accounts)
+  // }
+
+  // const onTest= async()=>{
+  //   await database.write(async()=>{
+  //     const accounts = await accountCollection.query().fetch();
+  //     const account= accounts[0]
+  //     account.update((updatedAccount)=>{
+  //       updatedAccount.name= "54321";
+
+  //     })
+  //   })
+  // }
   return (
     <View style={{flex:1}}>
       {/* <Text>Account</Text> */}
@@ -59,7 +63,7 @@ const AccountScreen = () => {
       </View>
      </View>
      <Button title='Add account' onPress={createAccount}/>
-     <Button title='Test' onPress={onTest}/>
+     <Button title='Delete' onPress={onDelete}/>
     </View>
   )
 }
